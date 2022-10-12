@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>MainApp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #2811b9;}
+.s1 { color: #4d4d4a;}
+.s2 { color: #505d64; font-style: italic;}
+.s3 { color: #005cc5;}
+.s4 { color: #0f92e3;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainApp.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">javax.swing.</span><span class="s0">*</span><span class="s1">;</span>
+<span class="s0">import </span><span class="s1">java.util.ArrayList;</span>
+<span class="s0">import </span><span class="s1">java.util.Scanner;</span>
+
+<span class="s0">public class </span><span class="s1">MainApp {</span>
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+
+        <span class="s1">Scanner teclado </span><span class="s0">= new </span><span class="s1">Scanner(System.in);</span>
+        <span class="s1">ArrayList</span><span class="s0">&lt;</span><span class="s1">Cadastrar</span><span class="s0">&gt; </span><span class="s1">CadastroPessoas </span><span class="s0">= new </span><span class="s1">ArrayList</span><span class="s0">&lt;&gt;</span><span class="s1">();</span>
+
+        <span class="s2">//Escolha entre cadastrar, ver lista e sair.</span>
+        <span class="s0">int </span><span class="s1">escolha </span><span class="s0">= </span><span class="s3">0</span><span class="s1">;</span>
+        <span class="s0">while </span><span class="s1">(escolha </span><span class="s0">!= </span><span class="s4">'3'</span><span class="s1">){</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;Digite 1 para cadastrar&quot;</span><span class="s1">);</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;Digite 2 para ver cadastros&quot;</span><span class="s1">);</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;Digite 3 para encerrar&quot;</span><span class="s1">);</span>
+            <span class="s1">escolha </span><span class="s0">= </span><span class="s1">teclado.nextLine().charAt(</span><span class="s3">0</span><span class="s1">);</span>
+
+            <span class="s2">//Fazer o Cadastro</span>
+            <span class="s0">if</span><span class="s1">(escolha </span><span class="s0">== </span><span class="s4">'1'</span><span class="s1">){</span>
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Insira seus dados!&quot;</span><span class="s1">);</span>
+                <span class="s1">Cadastrar cad </span><span class="s0">= new </span><span class="s1">Cadastrar();</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Nome: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.nome </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;CPF: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.cpf </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+                <span class="s2">//Conferir se está com os . e - e se tem a quantidade necessaria(14 digitos): xxx.xxx.xxx-xx</span>
+                <span class="s0">if</span><span class="s1">(cad.cpf.contains(</span><span class="s4">&quot;.&quot;</span><span class="s1">)){</span>
+                <span class="s1">}</span>
+                <span class="s0">if</span><span class="s1">(cad.cpf.contains(</span><span class="s4">&quot;-&quot;</span><span class="s1">)){</span>
+                <span class="s1">}</span>
+                <span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">System.out.println(</span><span class="s4">&quot;Insira o . e/ou - em seu cpf!&quot;</span><span class="s1">);</span>
+                    <span class="s0">return</span><span class="s1">;</span>
+                <span class="s1">}</span>
+                <span class="s0">if</span><span class="s1">(cad.cpf.length() </span><span class="s0">&lt; </span><span class="s3">14 </span><span class="s0">||  </span><span class="s1">cad.cpf.length() </span><span class="s0">&gt;  </span><span class="s3">14</span><span class="s1">){</span>
+                    <span class="s1">System.out.println(</span><span class="s4">&quot;Confira se seu cpf está no modelo correto! ex: 123.456.789-00 &quot;</span><span class="s1">);</span>
+                    <span class="s0">return</span><span class="s1">;</span>
+                <span class="s1">}</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;RG: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.rg </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Data de Nascimento: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.dataNascimento </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+                <span class="s2">//Conferir se está com a /  e se tem a quantidade necessaria(10 digitos): xx/xx/xxxx</span>
+                <span class="s0">if</span><span class="s1">(cad.dataNascimento.contains(</span><span class="s4">&quot;/&quot;</span><span class="s1">)){</span>
+                <span class="s1">}</span>
+                <span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">System.out.println(</span><span class="s4">&quot;Insira o / em sua data!&quot;</span><span class="s1">);</span>
+                    <span class="s0">return</span><span class="s1">;</span>
+                <span class="s1">}</span>
+                <span class="s0">if</span><span class="s1">(cad.dataNascimento.length() </span><span class="s0">&lt; </span><span class="s3">10 </span><span class="s0">|| </span><span class="s1">cad.dataNascimento.length() </span><span class="s0">&gt; </span><span class="s3">10</span><span class="s1">){</span>
+                    <span class="s1">System.out.println(</span><span class="s4">&quot;Confira se sua Data de Nascimento está no modelo correto! ex: 17/11/2003 &quot;</span><span class="s1">);</span>
+                    <span class="s0">return</span><span class="s1">;</span>
+                <span class="s1">}</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Telefone de contato: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.telefone </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+                <span class="s2">//Conferir se está com a ( e ) e - e se tem a quantidade necessaria(14 digitos): (xx)xxxxx-xxxx</span>
+                <span class="s0">if</span><span class="s1">(cad.telefone.contains(</span><span class="s4">&quot;(&quot;</span><span class="s1">)){</span>
+                <span class="s1">}</span>
+                <span class="s0">if</span><span class="s1">(cad.telefone.contains(</span><span class="s4">&quot;)&quot;</span><span class="s1">)){</span>
+                <span class="s1">}</span>
+                <span class="s0">if</span><span class="s1">(cad.telefone.contains(</span><span class="s4">&quot;-&quot;</span><span class="s1">)){</span>
+                <span class="s1">}</span>
+                <span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">System.out.println(</span><span class="s4">&quot;Insira o ( ) e/ou - em seu telefone!&quot;</span><span class="s1">);</span>
+                    <span class="s0">return</span><span class="s1">;</span>
+                <span class="s1">}</span>
+                <span class="s0">if</span><span class="s1">(cad.cpf.length() </span><span class="s0">&lt; </span><span class="s3">14 </span><span class="s0">||  </span><span class="s1">cad.cpf.length() </span><span class="s0">&gt;  </span><span class="s3">14</span><span class="s1">){</span>
+                    <span class="s1">System.out.println(</span><span class="s4">&quot;Confira se seu telefone está no modelo correto! ex: (41)99999-9999 &quot;</span><span class="s1">);</span>
+                    <span class="s0">return</span><span class="s1">;</span>
+                <span class="s1">}</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Email: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.email </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+                <span class="s2">//Conferir se está com o símbolo: @</span>
+                <span class="s0">if</span><span class="s1">(cad.email.contains(</span><span class="s4">&quot;@&quot;</span><span class="s1">)){</span>
+                <span class="s1">}</span>
+                <span class="s0">else</span><span class="s1">{</span>
+                    <span class="s1">System.out.println(</span><span class="s4">&quot;Insira o @ em seu email!&quot;</span><span class="s1">);</span>
+                    <span class="s0">return</span><span class="s1">;</span>
+                <span class="s1">}</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Endereço: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.endereco </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Cidade: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.cidade </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;UF: &quot;</span><span class="s1">);</span>
+                <span class="s1">cad.uf </span><span class="s0">= </span><span class="s1">teclado.nextLine();</span>
+
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Foto da Pessoa: &quot;</span><span class="s1">);</span>
+                <span class="s2">//Trazendo tela para buscar imagem</span>
+                <span class="s1">JFileChooser arquivo </span><span class="s0">= new </span><span class="s1">JFileChooser();</span>
+                <span class="s1">arquivo.setFileSelectionMode(JFileChooser.FILES_ONLY);</span>
+                <span class="s1">arquivo.showSaveDialog(</span><span class="s0">null</span><span class="s1">);</span>
+                <span class="s1">String caminho </span><span class="s0">= </span><span class="s1">arquivo.getSelectedFile().getAbsolutePath();</span>
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Você buscou o arquivo: &quot; </span><span class="s0">+ </span><span class="s1">caminho);</span>
+                <span class="s1">cad.foto </span><span class="s0">= </span><span class="s1">caminho;</span>
+
+                <span class="s1">CadastroPessoas.add(cad);</span>
+            <span class="s1">}</span>
+            <span class="s2">//Mostrar a lista dos cadastrados</span>
+            <span class="s0">else if</span><span class="s1">(escolha </span><span class="s0">== </span><span class="s4">'2'</span><span class="s1">){</span>
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Imprimindo conteúdo da lista...&quot;</span><span class="s1">);</span>
+                <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i </span><span class="s0">= </span><span class="s3">0</span><span class="s1">; i</span><span class="s0">&lt; </span><span class="s1">CadastroPessoas.size(); i</span><span class="s0">++</span><span class="s1">) {</span>
+                    <span class="s1">CadastroPessoas.get(i).lista();</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s2">//Caso digite uma opção inválida</span>
+            <span class="s0">else if</span><span class="s1">(escolha </span><span class="s0">!= </span><span class="s4">'1' </span><span class="s0">&amp;&amp; </span><span class="s1">escolha </span><span class="s0">!= </span><span class="s4">'2' </span><span class="s0">&amp;&amp; </span><span class="s1">escolha </span><span class="s0">!= </span><span class="s4">'3'</span><span class="s1">) {</span>
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Opção inválida!&quot;</span><span class="s1">);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s2">//Encerrando programa</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;Você escolheu encerrar o programa... &quot;</span><span class="s1">);</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;Encerrando...&quot;</span><span class="s1">);</span>
+        <span class="s1">System.exit(</span><span class="s3">0</span><span class="s1">);</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
